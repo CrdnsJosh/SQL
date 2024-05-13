@@ -58,28 +58,36 @@ VALUES
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
 
+# With a large amount of data I personally like to see it all visually before getting into my quieries.
 SELECT * FROM fortune_companies;
 
+# Analysis of the data above:
+
+# What is the number of employees per industry followed with their respective revenues.  
 SELECT industry,employees,revenue FROM fortune_companies
 GROUP BY industry
 ORDER BY employees DESC;
 
+# Which company has an average employee tenure of 5 years or more?
 SELECT company_name, ROUND(avg_employee_tenure,1) AS avg_tenure FROM fortune_companies
 WHERE avg_tenure > 5.0
 ORDER BY avg_tenure DESC;
 
+# Which companies are making over $250 billion in revenue *and* have over 5000 employees?
 SELECT * FROM fortune_companies
 WHERE revenue > 250.00
-AND employees > 5000
-ORDER BY company_name DESC;
+AND employees > 10000
+ORDER BY revenue DESC;
 
+# Which companies are making close to $250 billion and have less than 5000 employees?
 SELECT * FROM fortune_companies
 WHERE revenue <= 250.00
 AND employees <= 5000
 GROUP BY employees 
 HAVING employees <=5000
-ORDER BY company_name DESC;
+ORDER BY revenuue DESC;
 
+# Companies will be assigned "Employee Friendly Schedules","Good Employee Schedules", and "Work Oriented Employee Schedules" based on the healthcare benefits offered as well as the paid time off they give their employees.
 SELECT company_name, healthcare_benefits, paid_time_off_days,
 CASE
 WHEN paid_time_off_days >= 19 AND healthcare_benefits=1 THEN 'Employee Friendly Schedules'
