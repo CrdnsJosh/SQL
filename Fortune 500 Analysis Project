@@ -85,7 +85,7 @@ WHERE revenue <= 250.00
 AND employees <= 5000
 GROUP BY employees 
 HAVING employees <=5000
-ORDER BY revenuue DESC;
+ORDER BY revenue DESC;
 
 # Companies will be assigned "Employee Friendly Schedules","Good Employee Schedules", and "Work Oriented Employee Schedules" based on the healthcare benefits offered as well as the paid time off they give their employees.
 SELECT company_name, healthcare_benefits, paid_time_off_days,
