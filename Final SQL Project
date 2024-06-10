@@ -1,7 +1,6 @@
 # Down below you will see queries answering 14 preset questions numbered 1-14 and the final 3 are my own original questions I had for the Chinook database I used for this project.
 
 # Q1 Show Customers (their full names, customer ID, and country) who are not in the US.
-
 SELECT firstname, lastname, customerid, country
 FROM CHINOOK.customers
 WHERE country <> 'USA'
